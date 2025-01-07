@@ -10,6 +10,7 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>CarList</module>
+      <module>StudentsListOfSchool</module>
   </modules>
 
   <name>Tutorial</name>

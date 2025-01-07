@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CarService{
     List<Car> showAllCars();
-    Car findCarById(int id);
+    Car findCarById(long id);
     boolean saveCar(Car car);
     boolean updateCar(Car car);
     boolean removeCar(Car car);

@@ -93,7 +93,7 @@ public class CarRepoSql implements CarRepo{
             statement.setLong(5, car.getPrice());
 
             int rowsAffected = statement.executeUpdate();
-            System.out.println("Rows inserted: " + rowsAffected);
+            System.out.println("Rows car inserted: " + rowsAffected);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

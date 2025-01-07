@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>CarList</artifactId>
+    <artifactId>StudentsListOfSchool</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -49,7 +49,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>car_ser.CarDemo</mainClass> <!-- Заміни на ваш головний клас -->
+                            <mainClass>university_management.StudentDemo</mainClass> <!-- Заміни на ваш головний клас -->
                         </manifest>
                     </archive>
                     <descriptorRefs>

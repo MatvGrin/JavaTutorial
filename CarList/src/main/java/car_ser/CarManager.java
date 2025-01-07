@@ -1,7 +1,7 @@
 package car_ser;
 
 import car_ser.entity.Car;
-import car_ser.repo.CarRepoSql;
+import car_ser.service.CarService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,15 +9,14 @@ import java.util.List;
 
 public class CarManager extends JFrame {
 
-    private CarRepoSql carRepoSql;
+    private final CarService carService;
 
-    public CarManager() {
+    public CarManager(CarService carService) {
+        this.carService = carService;
         setTitle("Car Manager");
         setSize(500, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-
-        carRepoSql = new CarRepoSql();
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(5, 1, 10, 10));
@@ -56,7 +55,7 @@ public class CarManager extends JFrame {
             }
 
             Car car = new Car(0, brand, model, year, color, price);
-            carRepoSql.saveCar(car);
+            carService.saveCar(car);
             JOptionPane.showMessageDialog(this, "Car added!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,"Error");
@@ -66,7 +65,7 @@ public class CarManager extends JFrame {
     private void updateCar() {
         try {
             long id = Long.parseLong(JOptionPane.showInputDialog(this, "Enter car ID to update:"));
-            Car car = carRepoSql.findCarById(id);
+            Car car = carService.findCarById(id);
 
             if (car == null) {
                 JOptionPane.showMessageDialog(this, "not found");
@@ -83,7 +82,7 @@ public class CarManager extends JFrame {
             car.setColor(color);
             car.setPrice(price);
 
-            carRepoSql.updateCar(car);
+            carService.updateCar(car);
             JOptionPane.showMessageDialog(this, "Car updated");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error");
@@ -93,13 +92,13 @@ public class CarManager extends JFrame {
     private void deleteCar() {
         try {
             long id = Long.parseLong(JOptionPane.showInputDialog(this, "Enter car ID:"));
-            Car car = carRepoSql.findCarById(id);
+            Car car = carService.findCarById(id);
 
             if (car == null) {
                 JOptionPane.showMessageDialog(this, "not found");
                 return;
             }
-            carRepoSql.removeCar(car);
+            carService.removeCar(car);
             JOptionPane.showMessageDialog(this, "Car deleted");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error");
@@ -109,7 +108,7 @@ public class CarManager extends JFrame {
     private void findCar() {
         try {
             long id = Long.parseLong(JOptionPane.showInputDialog(this, "Enter car ID:"));
-            Car car = carRepoSql.findCarById(id);
+            Car car = carService.findCarById(id);
             JOptionPane.showMessageDialog(this, "Car found:\n" + car.toString());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error");
@@ -117,7 +116,7 @@ public class CarManager extends JFrame {
     }
 
     private void showAllCars() {
-        List<Car> cars = carRepoSql.getAllCars();
+        List<Car> cars = carService.showAllCars();
         if (cars.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No cars in the database.");
         } else {
