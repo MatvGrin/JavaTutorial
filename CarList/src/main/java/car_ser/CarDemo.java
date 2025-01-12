@@ -2,21 +2,23 @@ package car_ser;
 
 import car_ser.entity.Car;
 import car_ser.repo.CarRepo;
+import car_ser.repo.CarRepoImpl;
 import car_ser.repo.CarRepoSql;
 import car_ser.service.CarService;
 import car_ser.service.CarServiceImpl;
 
 import javax.swing.*;
 
-public class CarDemo extends CarManager {
+public class CarDemo {
 
 
     public CarDemo(CarService carService) {
-        super(carService);
+
     }
 
     public static void main(String[] args) {
         CarRepo carRepo = new CarRepoSql();
+//        CarRepo carRepo = new CarRepoImpl();
         CarService carService = new CarServiceImpl(carRepo);
 
 //        carService.saveCar(new Car(1, "Toyota", "Corolla", 2022, "Red", 22000));

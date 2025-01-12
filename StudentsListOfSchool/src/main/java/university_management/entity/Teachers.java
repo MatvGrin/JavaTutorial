@@ -10,7 +10,7 @@ import lombok.*;
 @ToString
 public class Teachers {
     private long id;
-    private String name;
+    private String firstName;
     private String subject;
     private long course_id;
 }

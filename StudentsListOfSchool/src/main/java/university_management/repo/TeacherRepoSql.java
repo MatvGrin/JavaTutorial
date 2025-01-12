@@ -37,7 +37,7 @@ public class TeacherRepoSql implements TeacherRepo{
         try (Connection connection = DatabaseConnection.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);) {
 
-            statement.setString(1, teacher.getName());
+            statement.setString(1, teacher.getFirstName());
             statement.setString(2, teacher.getSubject());
             statement.setLong(3, teacher.getCourse_id());
 
@@ -58,7 +58,7 @@ public class TeacherRepoSql implements TeacherRepo{
         String sql = "UPDATE teachers SET name=?, subject=?, course_id=? WHERE id = ?";
         try (Connection connection = DatabaseConnection.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);) {
-            statement.setString(1, teacher.getName());
+            statement.setString(1, teacher.getFirstName());
             statement.setString(2, teacher.getSubject());
             statement.setLong(3, teacher.getCourse_id());
             statement.setLong(4, teacher.getId());

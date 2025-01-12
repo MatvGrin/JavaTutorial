@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/university_management?useSSL=true&characterEncoding=utf8";
+    private static final String URL = "jdbc:mysql://127.0.0.1:3306/university_management?useSSL=false&characterEncoding=utf8";
     private static final String USER = "root";
     private static final String PASSWORD = "root";
 
@@ -13,10 +13,10 @@ public class DatabaseConnection {
     private final Connection connection;
 
     private DatabaseConnection() throws SQLException {
-        connection = DriverManager.getConnection(URL, USER, PASSWORD);
+        this.connection = DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
-    public static DatabaseConnection getInstance() throws SQLException {
+    public static synchronized DatabaseConnection getInstance() throws SQLException {
         if (instance == null || instance.connection.isClosed()) {
             instance = new DatabaseConnection();
         }
@@ -25,5 +25,15 @@ public class DatabaseConnection {
 
     public Connection getConnection() {
         return connection;
+    }
+
+    public void closeConnection() throws SQLException {
+        if (connection != null && !connection.isClosed()) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

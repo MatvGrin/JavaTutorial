@@ -1,4 +1,4 @@
-package com.basics.grin;
+package grin;
 
 import static org.junit.Assert.assertTrue;
 

@@ -58,7 +58,7 @@ public class StudentManager extends JFrame {
         JButton deleteButton = new JButton("Delete Student");
         JButton listButton = new JButton("List All Students");
         JButton findButton = new JButton("Find Student");
-
+/*"Add Student", "Update Student"*/
         // Add buttons to the panel
         panel.add(addButton);
         panel.add(updateButton);
@@ -232,11 +232,11 @@ public class StudentManager extends JFrame {
         long id = Long.parseLong(JOptionPane.showInputDialog(this, "Enter student ID to update:"));
         Students student = studentService.findStudentById(id);
         if (student != null) {
-            String name = JOptionPane.showInputDialog(this, "Enter new name:", student.getName());
+            String name = JOptionPane.showInputDialog(this, "Enter new name:", student.getFirstName());
             String email = JOptionPane.showInputDialog(this, "Enter new email:", student.getEmail());
             long courseId = Long.parseLong(JOptionPane.showInputDialog(this, "Enter new course ID:", student.getCourse_id()));
 
-            student.setName(name);
+            student.setFirstName(name);
             student.setEmail(email);
             student.setCourse_id(courseId);
             studentService.updateStudent(student);
@@ -359,10 +359,10 @@ public class StudentManager extends JFrame {
             }
 
             // Оновлюємо тільки ім'я
-            String name = JOptionPane.showInputDialog(this, "Enter new name:", teacher.getName());
+            String name = JOptionPane.showInputDialog(this, "Enter new name:", teacher.getFirstName());
 
             // Оновлюємо викладача
-            teacher.setName(name);
+            teacher.setFirstName(name);
 
             teacherService.updateTeacher(teacher);
             JOptionPane.showMessageDialog(this, "Teacher updated!");
