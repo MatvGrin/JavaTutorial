@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public class AuthorRepoJDBC implements AuthorRepository {
+
     @Override
     public Author createAuthor(Author author) {
         String sql = "INSERT INTO Authors (name, surname, nationality) VALUES (?, ?, ?)";
@@ -58,11 +59,11 @@ public class AuthorRepoJDBC implements AuthorRepository {
             while (resultSetBook.next()) {
                 long id = resultSetBook.getLong("id");
                 String title = resultSetBook.getString("title");
-                long published_year = resultSetBook.getLong("published_year");
+                long publishedYear = resultSetBook.getLong("published_year");
                 String genre = resultSetBook.getString("genre");
-                long author_id = resultSetBook.getLong("author_id");
-                Book book = new Book(id, title, published_year, genre);
-                authors.get(author_id).getBooks().add(book);
+                long authorId = resultSetBook.getLong("author_id");
+                Book book = new Book(id, title, publishedYear, genre);
+                authors.get(authorId).getBooks().add(book);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -96,9 +97,9 @@ public class AuthorRepoJDBC implements AuthorRepository {
             while (resultSetBook.next()) {
                 long id1 = resultSetBook.getLong("id");
                 String title = resultSetBook.getString("title");
-                long published_year = resultSetBook.getLong("published_year");
+                long publishedYear = resultSetBook.getLong("published_year");
                 String genre = resultSetBook.getString("genre");
-                Book book = new Book(id1, title, published_year, genre);
+                Book book = new Book(id1, title, publishedYear, genre);
                 author.getBooks().add(book);
             }
         } catch (SQLException e) {
@@ -172,9 +173,9 @@ public class AuthorRepoJDBC implements AuthorRepository {
                 while (resultSetBook.next()) {
                     long id1 = resultSetBook.getLong("id");
                     String title = resultSetBook.getString("title");
-                    long published_year = resultSetBook.getLong("published_year");
+                    long publishedYear = resultSetBook.getLong("published_year");
                     String genre = resultSetBook.getString("genre");
-                    Book book = new Book(id1, title, published_year, genre);
+                    Book book = new Book(id1, title, publishedYear, genre);
                     author.getBooks().add(book);
                 }
                 authors.add(author);
@@ -210,9 +211,9 @@ public class AuthorRepoJDBC implements AuthorRepository {
                 while (resultSetBook.next()) {
                     long id1 = resultSetBook.getLong("id");
                     String title = resultSetBook.getString("title");
-                    long published_year = resultSetBook.getLong("published_year");
+                    long publishedYear = resultSetBook.getLong("published_year");
                     String genre = resultSetBook.getString("genre");
-                    Book book = new Book(id1, title, published_year, genre);
+                    Book book = new Book(id1, title, publishedYear, genre);
                     author.getBooks().add(book);
                 }
                 authors.add(author);
@@ -248,9 +249,9 @@ public class AuthorRepoJDBC implements AuthorRepository {
                 while (resultSetBook.next()) {
                     long id1 = resultSetBook.getLong("id");
                     String title = resultSetBook.getString("title");
-                    long published_year = resultSetBook.getLong("published_year");
+                    long publishedYear = resultSetBook.getLong("published_year");
                     String genre = resultSetBook.getString("genre");
-                    Book book = new Book(id1, title, published_year, genre);
+                    Book book = new Book(id1, title, publishedYear, genre);
                     author.getBooks().add(book);
                 }
                 authors.add(author);
@@ -262,5 +263,15 @@ public class AuthorRepoJDBC implements AuthorRepository {
             e.printStackTrace();
         }
         return authors;
+    }
+
+    @Override
+    public List<Author> getAuthorsByBookCount(int bookCount) {
+        return null;
+    }
+
+    @Override
+    public List<Author> getAuthorsByBookGenre(String bookGenre) {
+        return null;
     }
 }

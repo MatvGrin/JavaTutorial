@@ -24,10 +24,12 @@ public class AuthorRepoJDBCTest {
         AUTHOR.setSurname("Twain");
         AUTHOR.setNationality("American");
     }
+
     @After
     public void clean(){
         DBUtils.deleteResources();
     }
+
     @Test
     public void createAuthor() {
         Author saveAuthor = authorRepository.createAuthor(AUTHOR);
@@ -109,10 +111,11 @@ public class AuthorRepoJDBCTest {
 
     @Test
     public void getAuthorsByBookCount() {
-
+        // ToDO
     }
 
     @Test
     public void getAuthorsByBookGenre() {
+        // ToDo
     }
 }

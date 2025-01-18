@@ -23,10 +23,12 @@ public class BookRepoJDBCTest {
         BOOK.setGenre("Magic Realism");
         BOOK.setId(1);
     }
+
     @After
     public void clean(){
         DBUtils.deleteResources();
     }
+
     @Test
     public void createBook() {
         Book saveBook = bookRepository.createBook(BOOK);
