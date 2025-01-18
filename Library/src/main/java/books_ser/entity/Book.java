@@ -13,5 +13,4 @@ public class Book {
     private String title;
     private long publishedYear;
     private String genre;
-
 }
