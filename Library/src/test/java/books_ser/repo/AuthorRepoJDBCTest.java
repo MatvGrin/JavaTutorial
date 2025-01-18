@@ -50,11 +50,11 @@ public class AuthorRepoJDBCTest {
 
     @Test
     public void getAuthorById() {
-        Book book = new Book(1, "One Hundred Years of Solitude", 1967, "Magic Realism");
+        Book book = new Book(2, "Pride and Prejudice", 1813, "Romance");
         List<Book> books = Arrays.asList(book);
-        Author author = new Author(1, "Gabriel", "Garcia Marquez", "Colombian", books);
+        Author author = new Author(2, "Jane", "Austen", "British", books);
 
-        Author authorById = authorRepository.getAuthorById(1);
+        Author authorById = authorRepository.getAuthorById(2);
 
         assertEquals(author, authorById);
     }
@@ -75,12 +75,12 @@ public class AuthorRepoJDBCTest {
 
     @Test
     public void getAuthorsByNationality() {
-        Book book = new Book(1, "One Hundred Years of Solitude", 1967, "Magic Realism");
+        Book book = new Book(4, "Norwegian Wood", 1987, "Romance");
         List<Book> books = List.of(book);
-        Author author = new Author(1, "Gabriel", "Garcia Marquez", "Colombian", books);
+        Author author = new Author(4, "Haruki", "Murakami", "Japanese", books);
         List<Author> authors = List.of(author);
 
-        List<Author> authorByNationality = authorRepository.getAuthorsByNationality("Colombian");
+        List<Author> authorByNationality = authorRepository.getAuthorsByNationality("Japanese");
 
         assertEquals(authors, authorByNationality);
     }
@@ -88,7 +88,8 @@ public class AuthorRepoJDBCTest {
     @Test
     public void getAuthorsBySurname() {
         Book book = new Book(1, "One Hundred Years of Solitude", 1967, "Magic Realism");
-        List<Book> books = List.of(book);
+        Book book2 = new Book(11, "The Autumn of the Patriarch", 1952, "Magic Realism");
+        List<Book> books = List.of(book,book2);
         Author author = new Author(1, "Gabriel", "Garcia Marquez", "Colombian", books);
         List<Author> authors = List.of(author);
 
@@ -100,7 +101,8 @@ public class AuthorRepoJDBCTest {
     @Test
     public void getAuthorsByName() {
         Book book = new Book(1, "One Hundred Years of Solitude", 1967, "Magic Realism");
-        List<Book> books = List.of(book);
+        Book book2 = new Book(11, "The Autumn of the Patriarch", 1952, "Magic Realism");
+        List<Book> books = List.of(book, book2);
         Author author = new Author(1, "Gabriel", "Garcia Marquez", "Colombian", books);
         List<Author> authors = List.of(author);
 
@@ -111,11 +113,26 @@ public class AuthorRepoJDBCTest {
 
     @Test
     public void getAuthorsByBookCount() {
-        // ToDO
+        Book book1 = new Book(1, "One Hundred Years of Solitude", 1967, "Magic Realism");
+        Book book2 = new Book(11, "The Autumn of the Patriarch", 1952, "Magic Realism");
+        Author author1 = new Author(1, "Gabriel", "Garcia Marquez", "Colombian", List.of(book1, book2));
+
+        List<Author> expectedAuthors = List.of(author1);
+        List<Author> authorsByBookCount = authorRepository.getAuthorsByBookCount(2);
+
+        assertEquals(expectedAuthors, authorsByBookCount);
     }
 
     @Test
     public void getAuthorsByBookGenre() {
-        // ToDo
+        Book book = new Book(3, "Adventures of Huckleberry Finn", 1884, "Adventure");
+        List<Book> books = List.of(book);
+
+        Author author = new Author(3, "Mark", "Twain", "American", books);
+        List<Author> authors = List.of(author);
+
+        List<Author> authorByGenre = authorRepository.getAuthorsByBookGenre("Adventure");
+
+        assertEquals(authors, authorByGenre);
     }
 }
