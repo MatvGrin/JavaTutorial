@@ -110,7 +110,7 @@ public class AuthorRepoJDBC implements AuthorRepository {
     @Override
     public boolean updateAuthor(Author author) {
         Author authorById = getAuthorById(author.getId());
-        if (authorById == null){
+        if (authorById == null) {
             return false;
         }
         String sql = "UPDATE Authors SET name=?, surname=?, nationality=? WHERE id = ?";
@@ -131,7 +131,7 @@ public class AuthorRepoJDBC implements AuthorRepository {
 
     @Override
     public boolean deleteAuthor(long id) {
-        if (id < 0){
+        if (id < 0) {
             return false;
         }
         String sqlBook = "DELETE FROM Books WHERE author_id = ?";
@@ -144,7 +144,7 @@ public class AuthorRepoJDBC implements AuthorRepository {
             statement.setLong(1, id);
             int i = statementBook.executeUpdate();
             int i1 = statement.executeUpdate();
-            return i==1 && i1==1;
+            return i == 1 && i1 == 1;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -262,51 +262,5 @@ public class AuthorRepoJDBC implements AuthorRepository {
             e.printStackTrace();
         }
         return authors;
-    }
-
-    @Override
-    public List<Author> getAuthorsByBookCount(long bookCount) {
-        List<Author> authors = new ArrayList<>();
-        String authorSql = "SELECT Authors.id, Authors.name, Authors.surname, Authors.nationality FROM Authors\n" +
-                "        JOIN (SELECT author_id, COUNT(*) AS book_count FROM Books\n" +
-                "        GROUP BY author_id\n" +
-                "        HAVING book_count >= ?) AS BookCounts\n" +
-                "        ON Authors.id = BookCounts.author_id;";
-
-        String bookSql = "SELECT id, title, published_year, genre FROM Books WHERE author_id = ?";
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
-             PreparedStatement statementAuthor = connection.prepareStatement(authorSql);
-             PreparedStatement statementBook = connection.prepareStatement(bookSql)) {
-            statementAuthor.setLong(1, bookCount);
-            ResultSet resultSetAuthor = statementAuthor.executeQuery();
-            while (resultSetAuthor.next()) {
-                long author_Id = resultSetAuthor.getLong("id");
-                String name = resultSetAuthor.getString("name");
-                String surname = resultSetAuthor.getString("surname");
-                String nationality = resultSetAuthor.getString("nationality");
-                Author author = new Author(author_Id, name, surname, nationality, new ArrayList<>());
-                statementBook.setLong(1, author_Id);
-                try (ResultSet resultSetBook = statementBook.executeQuery()) {
-                    while (resultSetBook.next()) {
-                        long bookId = resultSetBook.getLong("id");
-                        String title = resultSetBook.getString("title");
-                        long publishedYear = resultSetBook.getLong("published_year");
-                        String genre = resultSetBook.getString("genre");
-                        Book book = new Book(bookId, title, publishedYear, genre);
-                        author.getBooks().add(book);
-                    }
-                }
-                authors.add(author);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return authors;
-    }
-
-    @Override
-    public List<Author> getAuthorsByBookGenre(String genre) {
-        return null;
     }
 }

@@ -13,6 +13,4 @@ public interface AuthorRepository {
     List<Author> getAuthorsByNationality(String nationality);
     List<Author> getAuthorsBySurname(String surname);
     List<Author> getAuthorsByName(String name);
-    List<Author> getAuthorsByBookCount(long bookCount);
-    List<Author> getAuthorsByBookGenre(String genre);
 }
