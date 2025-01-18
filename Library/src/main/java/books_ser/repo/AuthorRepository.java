@@ -8,8 +8,8 @@ public interface AuthorRepository {
     Author createAuthor(Author author);
     List<Author> getAllAuthors();
     Author getAuthorById(long id);
-    void updateAuthor(Author author);
-    void deleteAuthor(long id);
+    boolean updateAuthor(Author author);
+    boolean deleteAuthor(long id);
     List<Author> getAuthorsByNationality(String nationality);
     List<Author> getAuthorsBySurname(String surname);
     List<Author> getAuthorsByName(String name);
