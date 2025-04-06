@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+    <import resource="spring.xml"/>
+
+    <bean id="carRepo" class="car_ser.repo.CarRepoJdbcSpring">
+        <constructor-arg ref="jdbcTemplate"/>
+    </bean>
+
+    <bean id="carService" class="car_ser.service.CarServiceImpl">
+        <property name="carRepo" ref="carRepo"/>
+    </bean>
+
+    <bean id="carDemo" class="car_ser.CarDemo">
+        <constructor-arg ref="carService"/>
+    </bean>
+
+</beans>
