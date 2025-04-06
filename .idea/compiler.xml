@@ -8,10 +8,30 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="CarList" />
+        <module name="CarSpringConfig" />
+        <module name="SportShop" />
+        <module name="JavaCore" />
+        <module name="Example" />
+        <module name="CarSpringAnnotation" />
+        <module name="SpringCore" />
+        <module name="CarSpringXml" />
+        <module name="DatabaseAccessSpringJDBC" />
         <module name="Library" />
         <module name="StudentsListOfSchool" />
-        <module name="JavaCore" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="CarList (2)" target="17" />
+      <module name="CarListSpringAnnotation" target="17" />
+      <module name="CarListSpringConfig" target="17" />
+      <module name="CarListSpringXml" target="17" />
+      <module name="CarSprinfAnnotation" target="17" />
+      <module name="NewServletProgram" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Example" options="" />
+    </option>
   </component>
 </project>
