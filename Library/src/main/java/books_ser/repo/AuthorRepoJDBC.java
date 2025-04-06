@@ -267,11 +267,81 @@ public class AuthorRepoJDBC implements AuthorRepository {
 
     @Override
     public List<Author> getAuthorsByBookCount(int bookCount) {
-        return null;
+        List<Author> authors = new ArrayList<>();
+        String sql = "SELECT author_id, COUNT(*) FROM Books \n" +
+                "GROUP BY author_id \n" +
+                "HAVING COUNT(*) = ?";
+        String authorSql = "SELECT id, name, surname, nationality FROM Authors WHERE id = ?";
+
+        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql);
+             PreparedStatement statementAuthor = connection.prepareStatement(authorSql)) {
+            statement.setInt(1, bookCount);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                long authorId = resultSet.getLong("author_id");
+                statementAuthor.setLong(1, authorId);
+                ResultSet resultSetAuthor = statementAuthor.executeQuery();
+                if (resultSetAuthor.next()) {
+                    String name = resultSetAuthor.getString("name");
+                    String surname = resultSetAuthor.getString("surname");
+                    String nationality = resultSetAuthor.getString("nationality");
+                    Author author = new Author(authorId, name, surname, nationality, new ArrayList<>());
+                    String bookSql = "SELECT id, title, published_year, genre FROM Books WHERE author_id = ?";
+                    PreparedStatement statementBook = connection.prepareStatement(bookSql);
+                    statementBook.setLong(1, authorId);
+                    ResultSet resultSetBook = statementBook.executeQuery();
+                    while (resultSetBook.next()) {
+                        long bookId = resultSetBook.getLong("id");
+                        String title = resultSetBook.getString("title");
+                        long publishedYear = resultSetBook.getLong("published_year");
+                        String genre = resultSetBook.getString("genre");
+                        Book book = new Book(bookId, title, publishedYear, genre);
+                        author.getBooks().add(book);
+                    }
+                    authors.add(author);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return authors;
     }
 
     @Override
     public List<Author> getAuthorsByBookGenre(String bookGenre) {
-        return null;
+        List<Author> authors = new ArrayList<>();
+        String sql = "SELECT * FROM Authors WHERE id IN (SELECT author_id FROM Books WHERE genre = ?)";
+        String bookSql = "SELECT id, title, published_year, genre FROM Books WHERE author_id = ?";
+        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql);
+             PreparedStatement statementBook = connection.prepareStatement(bookSql)) {
+
+            statement.setString(1, bookGenre);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                long id = resultSet.getLong("id");
+                String name = resultSet.getString("name");
+                String surname = resultSet.getString("surname");
+                String nationality = resultSet.getString("nationality");
+                Author author = new Author(id, name, surname, nationality, new ArrayList<>());
+
+                statementBook.setLong(1, id);
+                ResultSet resultSetBook = statementBook.executeQuery();
+                while (resultSetBook.next()) {
+                    long id1 = resultSetBook.getLong("id");
+                    String title = resultSetBook.getString("title");
+                    long publishedYear = resultSetBook.getLong("published_year");
+                    String genre = resultSetBook.getString("genre");
+                    Book book = new Book(id1, title, publishedYear, genre);
+                    author.getBooks().add(book);
+                }
+                authors.add(author);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return authors;
     }
 }

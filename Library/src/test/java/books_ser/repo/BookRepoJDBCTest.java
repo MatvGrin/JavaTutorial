@@ -35,23 +35,23 @@ public class BookRepoJDBCTest {
         assertEquals("One Hundred Years of Solitude",saveBook.getTitle());
         assertEquals(1967,saveBook.getPublishedYear());
         assertEquals("Magic Realism",saveBook.getGenre());
-        assertEquals(11,saveBook.getId());
+        assertEquals(12,saveBook.getId());
     }
 
     @Test
     public void getAllBooks() {
         final List<Book> all = bookRepository.getAllBooks();
 
-        assertEquals(10, all.size());
-        assertTrue(all.size() == 10);
+        assertEquals(11, all.size());
+        assertTrue(all.size() == 11);
         assertFalse(all.isEmpty());
     }
 
     @Test
     public void getBookById() {
-        Book book = new Book(1, "One Hundred Years of Solitude", 1967, "Magic Realism");
+        Book book = new Book(2, "Pride and Prejudice", 1813, "Romance");
 
-        Book bookById = bookRepository.getBookById(1);
+        Book bookById = bookRepository.getBookById(2);
 
         assertEquals(book, bookById);
     }
@@ -72,10 +72,10 @@ public class BookRepoJDBCTest {
 
     @Test
     public void getBooksByGenre() {
-        Book book = new Book(1, "One Hundred Years of Solitude", 1967, "Magic Realism");
+        Book book = new Book(6, "Murder on the Orient Express", 1934, "Mystery");
         List<Book> bokk = new ArrayList<>();
         bokk.add(book);
-        List<Book> bookByGenre = bookRepository.getBooksByGenre("Magic Realism");
+        List<Book> bookByGenre = bookRepository.getBooksByGenre("Mystery");
 
         assertEquals(bokk, bookByGenre);
     }
@@ -92,10 +92,10 @@ public class BookRepoJDBCTest {
 
     @Test
     public void getBooksByAuthorId() {
-        Book book = new Book(1, "One Hundred Years of Solitude", 1967, "Magic Realism");
+        Book book = new Book(2, "Pride and Prejudice", 1813, "Romance");
         List<Book> bokk = new ArrayList<>();
         bokk.add(book);
-        List<Book> bookByAuthorId = bookRepository.getBooksByAuthorId(1);
+        List<Book> bookByAuthorId = bookRepository.getBooksByAuthorId(2);
 
         assertEquals(bokk, bookByAuthorId);
     }
