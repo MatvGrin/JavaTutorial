@@ -13,6 +13,13 @@
       <module>StudentsListOfSchool</module>
       <module>Library</module>
       <module>JavaCore</module>
+      <module>SpringCore</module>
+      <module>Example</module>
+      <module>CarSpringXml</module>
+      <module>CarSpringAnnotation</module>
+      <module>SportShop</module>
+      <module>CarSpringConfig</module>
+      <module>DatabaseAccessSpringJDBC</module>
   </modules>
 
   <name>Tutorial</name>
