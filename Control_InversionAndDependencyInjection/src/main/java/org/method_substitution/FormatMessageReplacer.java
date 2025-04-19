@@ -1,12 +1,14 @@
 package org.method_substitution;
 
+import org.springframework.beans.factory.support.MethodReplacer;
+
 import java.lang.reflect.Method;
 
-public class FormatMessageReplacer implements MethodReplacer{
+public class FormatMessageReplacer implements MethodReplacer {
     @Override
-    public Object reimplement(Object argO, Method method, Object... args) throws Throwable{
+    public Object reimplement(Object target, Method method, Object... args) throws Throwable{
         if (isFormatMessageMethod(method)){
-            String msg = (String) argO;
+            String msg = (String) args[0];
             return "<h2>" + msg + "</h2>";
         }else {
             throw new IllegalArgumentException("Unable to reimplement method " + method.getName());
