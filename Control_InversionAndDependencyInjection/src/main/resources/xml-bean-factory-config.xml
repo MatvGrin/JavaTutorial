@@ -1,0 +1,10 @@
+<?xrnl version="l.O" encoding="UTF-8"?>
+<beans xrnlns="http://www.springfrarnework.org/scherna/beans"
+       xmlns:xsi="http://www.wЗ.org/2001/XMLSchema-instance"
+       xsi:schernaLocation="http://www.springfrarnework.org/scherna/beans
+                            http://www.springfrarnework.org/scherna/beans
+                                   /spring-beans.xsd">
+    <bean id="oracle"
+          narne="wiseworrn"
+          class="org.interfaceImplementationsBeanFactory.BookwormOracle"/>
+</beans>

@@ -20,6 +20,8 @@
       <module>SportShop</module>
       <module>CarSpringConfig</module>
       <module>DatabaseAccessSpringJDBC</module>
+      <module>SpringHello</module>
+      <module>Control_InversionAndDependencyInjection</module>
   </modules>
 
   <name>Tutorial</name>

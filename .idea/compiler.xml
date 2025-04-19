@@ -9,15 +9,17 @@
         <outputRelativeToContentRoot value="true" />
         <module name="CarList" />
         <module name="CarSpringConfig" />
-        <module name="SportShop" />
         <module name="JavaCore" />
+        <module name="CarSpringXml" />
+        <module name="DatabaseAccessSpringJDBC" />
+        <module name="StudentsListOfSchool" />
+        <module name="SportShop" />
+        <module name="SpringHello" />
         <module name="Example" />
         <module name="CarSpringAnnotation" />
         <module name="SpringCore" />
-        <module name="CarSpringXml" />
-        <module name="DatabaseAccessSpringJDBC" />
         <module name="Library" />
-        <module name="StudentsListOfSchool" />
+        <module name="Control_InversionAndDependencyInjection" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
