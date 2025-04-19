@@ -1,4 +1,4 @@
-package org.annotations;
+package org.configuringDependencyInjectionThroughTheConstructor;
 
 public interface MessageRenderer {
     void render();
