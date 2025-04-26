@@ -4,8 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="string1" class="java.lang.String"/>
-    <bean name="string2" class="java.lang.String"/>
-    <bean class="java.lang.String"/>
+    <bean id="johnMayer" class="org.resolve_dependencies.Singer"
+          depends-on="gopher"/>
+
+    <bean id="gopher"
+          class="org.resolve_dependencies.Guitar"/>
 
 </beans>
