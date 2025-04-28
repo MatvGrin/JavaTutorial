@@ -1,4 +1,4 @@
-package org.auto_linking_spring_beans_components;
+package org.autowired.auto_linking_spring_beans_components;
 
 import org.springframework.stereotype.Component;
 

@@ -1,9 +1,12 @@
 package org.resolve_dependencies;
 
 import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.*;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.stereotype.*;
 
+@Component("johnMayer")
+@DependsOn("gopher")
 public class Singer implements ApplicationContextAware {
     private ApplicationContext ctx;
 

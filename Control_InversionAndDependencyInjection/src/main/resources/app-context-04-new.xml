@@ -5,13 +5,13 @@
                            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="fooOne"
-          class="org.auto_linking_spring_beans_components.FooImplOne" primary="true"/>
+          class="org.autowired.auto_linking_spring_beans_components.FooImplOne" primary="true"/>
     <bean id="fooTwo"
-          class="org.auto_linking_spring_beans_components.FooImplTwo"/>
+          class="org.autowired.auto_linking_spring_beans_components.FooImplTwo"/>
     <bean id="bar"
-          class="org.auto_linking_spring_beans_components.Bar"/>
+          class="org.autowired.auto_linking_spring_beans_components.Bar"/>
     <bean id="targetByType" autowire="byType"
-          class="org.auto_linking_spring_beans_components.CTarget"
+          class="org.autowired.auto_linking_spring_beans_components.CTarget"
           lazy-init="true"/>
 
 </beans>

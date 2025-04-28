@@ -1,4 +1,4 @@
-package org.auto_linking_spring_beans_components;
+package org.autowired.auto_linking_spring_beans_components;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
 
@@ -40,10 +40,13 @@ public class Target {
         Target t = null;
         System.out.println("Using byName:\n");
         t = (Target) ctx.getBean("targetByName");
+        System.out.println(t);
         System.out.println("\nUsing byType:\n");
         t = (Target) ctx.getBean("targetByType");
+        System.out.println(t);
         System.out.println("\nUsing constructor:\n");
         t = (Target) ctx.getBean("targetConstructor");
+        System.out.println(t);
 
         ctx.close();
     }
