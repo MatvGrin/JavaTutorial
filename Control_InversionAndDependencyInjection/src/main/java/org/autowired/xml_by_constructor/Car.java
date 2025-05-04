@@ -3,32 +3,39 @@ package org.autowired.xml_by_constructor;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class Car {
-    private Engine dizelEngine;
+    private Engine petrolEngine;
     private Break aBreak;
     public Car() {
     }
 
-    public void setDizelEngine(Engine dizelEngine) {
-        this.dizelEngine = dizelEngine;
-        System.out.println("Called engine by set");
+    public Car(Engine dizelEngine) {
+        this.petrolEngine = dizelEngine;
+        System.out.println("Called engine by constructor");
     }
 
-    public void setaBreak(Break aBreak) {
+    public Car(Break aBreak) {
         this.aBreak = aBreak;
-        System.out.println("Called break by set");
+        System.out.println("Called break by constructor");
     }
+
+    public Car(Engine petrolEngine, Break aBreak) {
+        this.petrolEngine = petrolEngine;
+        this.aBreak = aBreak;
+        System.out.println("Called engine and break by constructor");
+    }
+
 
     void action(){
-        dizelEngine.move();
+        petrolEngine.move();
         aBreak.stop();
     }
 
     public static void main(String... args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.load("app-context-03-new-03.xml");
+        ctx.load("app-context-03-new-04.xml");
         ctx.refresh();
 
-        Car car = (Car) ctx.getBean("carByName");
+        Car car = (Car) ctx.getBean("carConstructor");
         car.action();
 
         ctx.close();

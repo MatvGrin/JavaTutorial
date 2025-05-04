@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="aBreak" class="org.autowired.xml_by_constructor.Break"/>
+
+    <bean id="petrolEngine" class="org.autowired.xml_by_constructor.PetrolEngine"/>
+
+    <bean id="carConstructor" autowire="constructor" class="org.autowired.xml_by_constructor.Car" lazy-init="true"/>
+
+</beans>
