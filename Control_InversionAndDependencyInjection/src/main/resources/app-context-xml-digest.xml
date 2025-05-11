@@ -7,7 +7,7 @@
 
     <bean id="shaDigest"
           class="org.life_cycle_different_variations.fabrica_class_message_digest_factory_bean.MessageDigestFactoryBean"
-          p:algorithmName="SНA1"/>
+          p:algorithmName="SHA1"/>
 
     <bean id="defaultDigest"
           class="org.life_cycle_different_variations.fabrica_class_message_digest_factory_bean.MessageDigestFactoryBean"/>

@@ -8,6 +8,7 @@ import java.security.MessageDigest;
 public class MessageDigestFactoryBean implements FactoryBean<MessageDigest>, InitializingBean {
     private String algorithmName = "MD5";
     private MessageDigest messageDigest = null;
+
     @Override
     public MessageDigest getObject() throws Exception {
         return messageDigest;
