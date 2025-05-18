@@ -12,18 +12,16 @@ public class ResourceDemo {
         ApplicationContext ctx = new ClassPathXmlApplicationContext();
         File file = File.createTempFile("test", "txt");
         file.deleteOnExit();
-
-        Resource res1 = ctx.getResource("file://" + file.getPath());
+        Resource res1 = ctx.getResource(file.toURI().toString());
         displayInfo(res1);
-        Resource res2 = ctx.getResource("test.txt");
+
+        Resource res2 = ctx.getResource("classpath:test.txt");
         displayInfo(res2);
-        Resource res3 = ctx.getResource("http://www.google.com");
-        displayInfo(res3);
     }
 
     private static void displayInfo(Resource res) throws IOException {
-        System.out.println(res.getClass());
-        System.out.println(res.getURL().getContent());
-        System.out.println("");
+        System.out.println("Resource type: " + res.getClass());
+        System.out.println("Content: " + new String(res.getInputStream().readAllBytes()));
+        System.out.println("-----------------------");
     }
 }

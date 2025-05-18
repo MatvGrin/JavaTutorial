@@ -4,6 +4,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages= ("com.apress.prospring5.ch4.annotated"))
+@ComponentScan(basePackages= ("org.life_cycle_different_variations.configuring_the_application_context_type_in_java"))
 public class AppConfigFour {
 }
