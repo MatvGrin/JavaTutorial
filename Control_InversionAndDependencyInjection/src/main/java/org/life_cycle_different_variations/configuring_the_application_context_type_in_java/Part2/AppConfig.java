@@ -7,12 +7,14 @@ import org.springframework.context.annotation.*;
 public class AppConfig {
     @Bean
     public MessageProvider messageProvider() {
-        return new ConfigurableMessageProvider();
+        ConfigurableMessageProvider configurableMessageProvider = new ConfigurableMessageProvider();
+        configurableMessageProvider.setMessage("This is а configurable message");
+        return configurableMessageProvider;
     }
     @Bean
-    public MessageRenderer messageRenderer(){
+    public MessageRenderer messageRenderer(MessageProvider messageProvider){
         MessageRenderer renderer = new StandardOutMessageRenderer();
-        renderer.setMessageProvider(messageProvider());
+        renderer.setMessageProvider(messageProvider);
         return renderer;
     }
 }

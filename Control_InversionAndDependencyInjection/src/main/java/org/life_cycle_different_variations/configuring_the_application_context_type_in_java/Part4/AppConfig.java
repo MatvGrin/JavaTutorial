@@ -15,15 +15,16 @@ public class AppConfig {
     @Bean
     @Lazy
     public MessageProvider messageProvider() {
-        return new ConfigurableMessageProvider(env.getProperty("message"));
+        String message = env.getProperty("message");
+        return new ConfigurableMessageProvider(message);
     }
 
     @Bean(name = "messageRenderer")
     @Scope(value = "prototype")
     @DependsOn(value = "messageProvider")
-    public MessageRenderer messageRenderer() {
+    public MessageRenderer messageRenderer(MessageProvider messageProvider) {
         MessageRenderer renderer = new StandardOutMessageRenderer();
-        renderer.setMessageProvider(messageProvider());
+        renderer.setMessageProvider(messageProvider);
         return renderer;
     }
 }

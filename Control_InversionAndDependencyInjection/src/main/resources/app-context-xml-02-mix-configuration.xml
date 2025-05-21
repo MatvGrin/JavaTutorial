@@ -12,7 +12,7 @@
 
     <bean class="org.life_cycle_different_variations.configuring_the_application_context_type_in_java.mix_configuration.AppConfigSix"/>
     <bean id="messageRenderer" class="org.life_cycle_different_variations.configuring_the_application_context_type_in_java.Part1.StandardOutMessageRenderer"
-          p:messageProvider-ref="provider"/>
+          p:messageProvider-ref="messageProvider"/>
 
 </beans>
 

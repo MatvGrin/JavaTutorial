@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfigSix {
     @Bean
-    public MessageProvider messageRenderer(){
-        return new ConfigurableMessageProvider("Love on the weekend");
+    public MessageProvider messageProvider(){
+        return new ConfigurableMessageProvider("Love on the weekend 5/18");
     }
 }

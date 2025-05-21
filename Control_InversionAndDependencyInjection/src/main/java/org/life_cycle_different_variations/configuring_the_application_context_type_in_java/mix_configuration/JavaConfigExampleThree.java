@@ -8,7 +8,6 @@ public class JavaConfigExampleThree {
     public static void main(String... args) {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("app-context-xml-02-mix-configuration.xml");
         MessageRenderer renderer = ctx.getBean("messageRenderer", MessageRenderer.class);
-
         renderer.render();
     }
 }

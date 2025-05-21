@@ -6,9 +6,11 @@ import java.util.List;
 
 public class ProfileXmlConfigExample {
     public static void main(String[] args) {
+        for (String arg : args) {
+            System.out.println(arg);
+        }
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.getEnvironment().setActiveProfiles("highschool");
-        ctx.load("highschool-config.xml", "kindergarten-config.xml");
+        ctx.load("classpath:*-config-profile.xml");
         ctx.refresh();
 
         FoodProviderService foodProviderService = ctx.getBean("foodProviderService", FoodProviderService.class);
