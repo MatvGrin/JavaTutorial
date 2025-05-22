@@ -6,6 +6,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.GenericApplicationContext;
 
 import java.util.List;
+import java.util.Map;
 
 public class ProfileJavaConfigExample {
     public static void main(String[] args) {
@@ -17,6 +18,10 @@ public class ProfileJavaConfigExample {
             System.out.println("Food: " + food.getName());
         }
         ctx.close();
+//        Map<String, String> getenv = System.getenv();
+//        for (Map.Entry<String, String> entry : getenv.entrySet()) {
+//            System.out.println(entry.getKey() + " *** " + entry.getValue());
+//        }
     }
 }
 //-Dspring.profiles.active=kindergarten

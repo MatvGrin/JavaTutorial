@@ -15,7 +15,7 @@ public class EnvironmentSampleLast {
         ConfigurableEnvironment env = ctx.getEnvironment();
         MutablePropertySources propertySources = env.getPropertySources();
         Map<String, Object> аррМар = new HashMap<>();
-        аррМар.put("user.home", "application_home");
+        аррМар.put("application.home", "application_home");
         propertySources.addLast(new MapPropertySource(
                 "prospring5_МАР", аррМар));
         System.out.println("user.home: "

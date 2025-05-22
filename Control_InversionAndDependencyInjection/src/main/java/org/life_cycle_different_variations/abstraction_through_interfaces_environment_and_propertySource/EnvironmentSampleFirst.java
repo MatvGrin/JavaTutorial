@@ -2,6 +2,7 @@ package org.life_cycle_different_variations.abstraction_through_interfaces_envir
 
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.MutablePropertySources;
 
 import java.util.HashMap;
@@ -15,6 +16,8 @@ public class EnvironmentSampleFirst {
         MutablePropertySources propertySources = env.getPropertySources();
         Map<String, Object> аррМар = new HashMap<>();
         аррМар.put("user.home", "application_home");
+        propertySources.addFirst(new MapPropertySource(
+                "prospring5_МАР", аррМар));
         System.out.println("user.home: "
                 + System.getProperty("user.home"));
         System.out.println("JAVA_HOME: "
