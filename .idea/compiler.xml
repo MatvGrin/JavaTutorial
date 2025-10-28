@@ -19,6 +19,7 @@
         <module name="CarSpringAnnotation" />
         <module name="SpringCore" />
         <module name="Library" />
+        <module name="TwentyThreePatternsGof" />
         <module name="Control_InversionAndDependencyInjection" />
       </profile>
     </annotationProcessing>

@@ -22,6 +22,7 @@
       <module>DatabaseAccessSpringJDBC</module>
       <module>SpringHello</module>
       <module>Control_InversionAndDependencyInjection</module>
+      <module>TwentyThreePatternsGof</module>
   </modules>
 
   <name>Tutorial</name>
