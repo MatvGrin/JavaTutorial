@@ -1,0 +1,13 @@
+package org.life_cycle_different_variations.configuring_the_application_context_type_in_java.Part2;
+
+import org.life_cycle_different_variations.configuring_the_application_context_type_in_java.Part1.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+public class JavaConfigExampleOne {
+    public static void main(String... args) {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        MessageRenderer renderer = ctx.getBean("messageRenderer", MessageRenderer.class);
+        renderer.render();
+    }
+}

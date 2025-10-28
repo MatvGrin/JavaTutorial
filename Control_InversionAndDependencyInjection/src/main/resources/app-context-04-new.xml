@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="fooOne"
+          class="org.autowired.auto_linking_spring_beans_components.FooImplOne" primary="true"/>
+    <bean id="fooTwo"
+          class="org.autowired.auto_linking_spring_beans_components.FooImplTwo"/>
+    <bean id="bar"
+          class="org.autowired.auto_linking_spring_beans_components.Bar"/>
+    <bean id="targetByType" autowire="byType"
+          class="org.autowired.auto_linking_spring_beans_components.CTarget"
+          lazy-init="true"/>
+
+</beans>
